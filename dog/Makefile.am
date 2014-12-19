@@ -43,6 +43,11 @@ noinst_HEADERS		= treeview.h dog.h farm/farm.h
 
 EXTRA_DIST		=
 
+if BUILD_EARTHQUAKE
+dog_LDADD		+= ../tests/earthquake/earthquake.git/inspector/c/embed/eq_embed.so
+dog_DEPENDENCIES	+= ../tests/earthquake/earthquake.git/inspector/c/embed/eq_embed.so
+endif
+
 install-exec-hook:
 	if [ -z "${DESTDIR}" ];then $(LN_S) -f ${sbindir}/dog ${sbindir}/collie;fi
 
